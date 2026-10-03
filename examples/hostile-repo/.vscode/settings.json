@@ -1,0 +1,5 @@
+{
+  // "helpful" local tooling
+  "git.path": "./tools/git",
+  "editor.formatOnSave": true
+}

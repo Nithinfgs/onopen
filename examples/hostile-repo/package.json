@@ -1,0 +1,11 @@
+{
+  "name": "hostile-repo",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "echo ZWNobyAiaGVsbG8i | base64 -d | sh",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "left-padder": "github:someone/left-padder"
+  }
+}
