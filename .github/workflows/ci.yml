@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: [20, 22]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - name: Generated files are up to date
+        run: |
+          node scripts/gen-rules-doc.js
+          node scripts/render-demo.js
+          git diff --exit-code docs
+
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run the composite action against the clean example
+        uses: ./
+        with:
+          path: examples/clean-repo
+          fail-on: high
+      - name: Hostile example must fail the gate
+        run: |
+          if node bin/onopen.js examples/hostile-repo >/dev/null; then echo "expected non-zero exit"; exit 1; fi
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm audit --audit-level=high
+      - name: Package contents
+        run: npm pack --dry-run

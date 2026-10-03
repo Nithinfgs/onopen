@@ -1,0 +1,15 @@
+name: Missed detection
+description: A risky repo-controlled config produced no finding
+labels: [missed-detection]
+body:
+  - type: markdown
+    attributes:
+      value: Please use an inert, sanitized example (domains under `example.invalid`). Do not post live malware.
+  - type: textarea
+    id: snippet
+    attributes: { label: File path and contents, render: text }
+    validations: { required: true }
+  - type: textarea
+    id: why
+    attributes: { label: What does it do, and when does it run? }
+    validations: { required: true }
