@@ -1,0 +1,16 @@
+name: Support a new config format
+description: A tool or agent whose repo-level config can execute code
+labels: [enhancement, format]
+body:
+  - type: input
+    id: tool
+    attributes: { label: Tool or agent }
+    validations: { required: true }
+  - type: input
+    id: path
+    attributes: { label: Config file path(s), placeholder: ".toolname/config.json" }
+    validations: { required: true }
+  - type: textarea
+    id: docs
+    attributes: { label: Link to docs or a schema, and how the config can run commands }
+    validations: { required: true }
