@@ -1,0 +1,59 @@
+{
+  "name": "onopen",
+  "version": "0.1.0",
+  "description": "See what a repo will run before you open it, install it, or trust it in your coding agent. Offline static scanner. Never executes anything.",
+  "type": "module",
+  "bin": {
+    "onopen": "bin/onopen.js"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "docs/rules.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "lint": "eslint .",
+    "typecheck": "tsc -p jsconfig.json",
+    "check": "npm run lint && npm run typecheck && npm test",
+    "demo": "node bin/onopen.js examples/hostile-repo --fail-on none",
+    "render:demo": "node scripts/render-demo.js"
+  },
+  "keywords": [
+    "security",
+    "supply-chain",
+    "mcp",
+    "claude-code",
+    "coding-agents",
+    "devcontainer",
+    "vscode",
+    "static-analysis",
+    "cli"
+  ],
+  "author": "Nithinfgs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nithinfgs/onopen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nithinfgs/onopen/issues"
+  },
+  "homepage": "https://github.com/Nithinfgs/onopen#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "typescript": "^5.5.0"
+  }
+}
