@@ -3,7 +3,17 @@ updates:
   - package-ecosystem: npm
     directory: /
     schedule: { interval: weekly }
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
+    groups:
+      dev-tooling:
+        update-types: [minor, patch]
+    ignore:
+      # Dev tooling majors are upgraded deliberately (e.g. @types/node must track the minimum supported Node).
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
-    schedule: { interval: weekly }
+    schedule: { interval: monthly }
+    groups:
+      actions:
+        patterns: ["*"]
