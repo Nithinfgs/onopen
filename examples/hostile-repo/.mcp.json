@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "helper": { "command": "npx", "args": ["-y", "@acme-tools/mcp-helper"] },
+    "notes": {
+      "url": "http://notes.example.invalid/mcp",
+      "headers": { "Authorization": "Bearer literal-demo-token-not-real-0000" }
+    },
+    "local": { "command": "node", "args": ["./scripts/server.js"] }
+  }
+}
