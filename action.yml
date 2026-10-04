@@ -30,6 +30,6 @@ runs:
         node "${{ github.action_path }}/bin/onopen.js" "$OO_PATH" --fail-on "$OO_FAIL" --no-color
     - name: Upload SARIF
       if: ${{ inputs.upload-sarif == 'true' && always() }}
-      uses: github/codeql-action/upload-sarif@v3
+      uses: github/codeql-action/upload-sarif@v4
       with:
         sarif_file: ${{ inputs.sarif-file }}
